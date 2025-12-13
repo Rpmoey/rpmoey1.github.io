@@ -14,20 +14,18 @@
   
   <style>
     :root {
-      --main-color: #00e676; /* أخضر نيون */
+      --main-color: #00e676; 
       --main-glow: rgba(0, 230, 118, 0.7);
-      
-      --blue-color: #29b6f6; /* أزرق نيون */
+      --blue-color: #29b6f6;
       --blue-glow: rgba(41, 182, 246, 0.7);
-      
-      --purple-color: #d500f9; /* بنفسجي نيون */
+      --purple-color: #d500f9;
       --purple-glow: rgba(213, 0, 249, 0.7);
-      
       --discord-color: #5865F2; 
-      --bg-dark: #0a0a0a; /* أسود حالك */
+      --bg-dark: #0a0a0a;
       --card-bg: #141414;
       --text-color: #ffffff;
       --danger-color: #ff5252;
+      --gold-color: #FFD700; /* لون ذهبي للريال */
     }
 
     html { scroll-behavior: smooth; }
@@ -98,123 +96,100 @@
       font-size: 4rem;
       font-weight: 900;
       margin-bottom: 15px;
-      text-shadow: 
-        0 0 10px rgba(0,0,0,0.8),
-        0 0 20px var(--main-color),
-        0 0 50px var(--main-glow);
+      text-shadow: 0 0 10px rgba(0,0,0,0.8), 0 0 20px var(--main-color), 0 0 50px var(--main-glow);
     }
     .hero-title span { color: #fff; }
 
     .hero-buttons { display: flex; gap: 20px; justify-content: center; margin-top: 30px; flex-wrap: wrap; }
 
     .cta-btn {
-      background: rgba(0, 0, 0, 0.5);
-      border: 2px solid var(--main-color);
-      color: var(--main-color);
-      padding: 12px 50px;
-      font-size: 1.2rem;
-      font-weight: bold;
-      border-radius: 50px;
-      transition: all 0.3s ease;
-      text-decoration: none;
-      box-shadow: 0 0 15px var(--main-glow);
+      background: rgba(0, 0, 0, 0.5); border: 2px solid var(--main-color); color: var(--main-color); padding: 12px 50px; font-size: 1.2rem; font-weight: bold; border-radius: 50px; transition: all 0.3s ease; text-decoration: none; box-shadow: 0 0 15px var(--main-glow);
     }
     .cta-btn:hover {
-      background: var(--main-color);
-      color: #000;
-      box-shadow: 0 0 30px var(--main-color), 0 0 60px var(--main-glow);
-      transform: translateY(-5px);
+      background: var(--main-color); color: #000; box-shadow: 0 0 30px var(--main-color), 0 0 60px var(--main-glow); transform: translateY(-5px);
     }
 
     .discord-btn {
-        background-color: rgba(88, 101, 242, 0.2);
-        color: white; padding: 12px 50px;
-        font-size: 1.2rem; font-weight: bold; border-radius: 50px; text-decoration: none;
-        border: 2px solid var(--discord-color);
-        transition: all 0.3s;
-        box-shadow: 0 0 15px rgba(88, 101, 242, 0.5);
+        background-color: rgba(88, 101, 242, 0.2); color: white; padding: 12px 50px; font-size: 1.2rem; font-weight: bold; border-radius: 50px; text-decoration: none; border: 2px solid var(--discord-color); transition: all 0.3s; box-shadow: 0 0 15px rgba(88, 101, 242, 0.5);
     }
     .discord-btn:hover {
-        background-color: var(--discord-color);
-        box-shadow: 0 0 30px var(--discord-color), 0 0 60px rgba(88, 101, 242, 0.8);
-        transform: translateY(-5px);
+        background-color: var(--discord-color); box-shadow: 0 0 30px var(--discord-color), 0 0 60px rgba(88, 101, 242, 0.8); transform: translateY(-5px);
     }
 
     /* --- العناوين --- */
     .section-header { text-align: center; margin: 80px 0 50px; }
     .section-header h2 {
-      font-weight: 900; font-size: 3rem; position: relative; display: inline-block;
-      text-shadow: 0 0 20px rgba(255,255,255,0.2);
+      font-weight: 900; font-size: 3rem; position: relative; display: inline-block; text-shadow: 0 0 20px rgba(255,255,255,0.2);
     }
     .section-header h2::after {
-      content: ''; display: block; width: 60%; height: 5px; 
-      background: linear-gradient(90deg, transparent, var(--main-color), transparent);
-      margin: 15px auto 0;
-      box-shadow: 0 0 15px var(--main-color);
+      content: ''; display: block; width: 60%; height: 5px; background: linear-gradient(90deg, transparent, var(--main-color), transparent); margin: 15px auto 0; box-shadow: 0 0 15px var(--main-color);
     }
 
     /* --- الكروت --- */
     .card {
-      background-color: var(--card-bg);
-      border: 1px solid rgba(255,255,255,0.05);
-      border-radius: 20px;
-      padding: 30px 20px;
-      text-align: center;
-      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-      position: relative;
-      overflow: visible;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.8); 
+      background-color: var(--card-bg); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; padding: 30px 20px; text-align: center; transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); position: relative; overflow: visible; box-shadow: 0 10px 30px rgba(0,0,0,0.8);
     }
 
     .rank-name { font-size: 2.2rem; font-weight: 900; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
 
-    /* 🟢 VIP Shadows */
+    /* VIP Shadows */
     .vip-card:hover {
-        border-color: var(--main-color);
-        transform: translateY(-15px) scale(1.05);
-        box-shadow: 0 0 20px var(--main-glow), 0 0 50px var(--main-glow), 0 0 100px rgba(0, 230, 118, 0.2);
-        z-index: 10;
+        border-color: var(--main-color); transform: translateY(-15px) scale(1.05);
+        box-shadow: 0 0 20px var(--main-glow), 0 0 50px var(--main-glow), 0 0 100px rgba(0, 230, 118, 0.2); z-index: 10;
     }
     .vip-card .rank-name { color: var(--main-color); text-shadow: 0 0 15px var(--main-glow); }
     .vip-card .buy-btn { background: linear-gradient(45deg, #00e676, #00c853); color: black; box-shadow: 0 0 15px var(--main-glow); }
 
-    /* 🔵 MVP Shadows */
+    /* MVP Shadows */
     .mvp-card:hover {
-        border-color: var(--blue-color);
-        transform: translateY(-15px) scale(1.05);
-        box-shadow: 0 0 20px var(--blue-glow), 0 0 50px var(--blue-glow), 0 0 100px rgba(41, 182, 246, 0.2);
-        z-index: 10;
+        border-color: var(--blue-color); transform: translateY(-15px) scale(1.05);
+        box-shadow: 0 0 20px var(--blue-glow), 0 0 50px var(--blue-glow), 0 0 100px rgba(41, 182, 246, 0.2); z-index: 10;
     }
     .mvp-card .rank-name { color: var(--blue-color); text-shadow: 0 0 15px var(--blue-glow); }
     .mvp-card .buy-btn { background: linear-gradient(45deg, #29b6f6, #0288d1); box-shadow: 0 0 15px var(--blue-glow); }
 
-    /* 🟣 ALGAYAR Shadows */
+    /* ALGAYAR Shadows */
     .algayar-card { border: 1px solid rgba(213, 0, 249, 0.3); }
     .algayar-card:hover {
-        border-color: var(--purple-color);
-        transform: translateY(-15px) scale(1.05);
-        box-shadow: 0 0 30px var(--purple-glow), 0 0 70px var(--purple-glow), 0 0 120px rgba(213, 0, 249, 0.3);
-        z-index: 10;
+        border-color: var(--purple-color); transform: translateY(-15px) scale(1.05);
+        box-shadow: 0 0 30px var(--purple-glow), 0 0 70px var(--purple-glow), 0 0 120px rgba(213, 0, 249, 0.3); z-index: 10;
     }
     .algayar-card .rank-name { color: var(--purple-color); text-shadow: 0 0 25px var(--purple-glow); }
     .algayar-card .buy-btn { background: linear-gradient(45deg, #e040fb, #aa00ff); box-shadow: 0 0 25px var(--purple-glow); }
 
-    .price { font-size: 1.8rem; font-weight: 900; color: #fff; margin-bottom: 25px; margin-top: 10px; }
+    /* --- تنسيق السعر الجديد (EGP فوق و RYAL تحت) --- */
+    .price-box {
+        margin: 20px 0;
+        padding: 10px;
+        background: rgba(255,255,255,0.03);
+        border-radius: 10px;
+    }
+    .price-egp {
+        display: block;
+        font-size: 1.8rem;
+        font-weight: 900;
+        color: #fff;
+        line-height: 1.2;
+    }
+    .price-ryal {
+        display: block;
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--gold-color); /* لون ذهبي للريال */
+        margin-top: 5px;
+    }
     
     .buy-btn { width: 100%; padding: 15px; border-radius: 50px; border: none; font-weight: bold; font-size: 1.2rem; color: white; transition: 0.3s; }
     .buy-btn:hover { filter: brightness(1.2); transform: scale(1.05); }
 
-    /* --- المميزات (Features) --- */
+    /* --- المميزات --- */
     .features-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 25px;
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px;
     }
     .feature-card {
         background: #141414; border: 1px solid #333; border-radius: 20px; padding: 25px; transition: 0.4s;
     }
     .feature-card:hover { transform: translateY(-10px); box-shadow: 0 10px 40px rgba(0,0,0,0.8); }
-    
     .f-vip:hover { border-color: var(--main-color); box-shadow: 0 0 30px rgba(0, 230, 118, 0.2); }
     .f-mvp:hover { border-color: var(--blue-color); box-shadow: 0 0 30px rgba(41, 182, 246, 0.2); }
     .f-algayar:hover { border-color: var(--purple-color); box-shadow: 0 0 30px rgba(213, 0, 249, 0.2); }
@@ -224,7 +199,6 @@
     .feature-list { list-style: none; padding: 0; margin: 0; text-align: left; direction: ltr; }
     .feature-list li { margin-bottom: 12px; color: #ccc; font-size: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px; display: flex; align-items: center; }
     .feature-list li:before { content: "✔"; font-weight: bold; margin-right: 10px; font-size: 1.1rem; }
-    
     .f-vip h4, .f-vip li:before { color: var(--main-color); }
     .f-mvp h4, .f-mvp li:before { color: var(--blue-color); }
     .f-algayar h4, .f-algayar li:before { color: var(--purple-color); }
@@ -297,7 +271,7 @@
   <div class="hero-section">
     <div class="hero-overlay"></div>
     <div class="hero-content container">
-        <h1 class="hero-title">Welcome to <span>Algayar</span></h1>
+        <h1 class="hero-title">Welcome to <span>AlgayarCraft</span></h1>
         <p class="hero-subtitle">انضم للنخبة وسيطر على السيرفر بأقوى الرتب والمميزات الحصرية.</p>
         <div class="hero-buttons">
             <a href="#ranks" class="cta-btn">تصفح الرتب <i class="bi bi-arrow-down"></i></a>
@@ -319,7 +293,10 @@
         <div class="col-md-6 col-lg-4">
             <div class="card vip-card">
                 <div class="rank-name">VIP</div>
-                <div class="price">85 EGP | 6 SAR</div>
+                <div class="price-box">
+                    <span class="price-egp">85 EGP</span>
+                    <span class="price-ryal">6 RYAL</span>
+                </div>
                 <button onclick="openForm('VIP')" class="buy-btn">شراء الآن</button>
             </div>
         </div>
@@ -328,7 +305,10 @@
         <div class="col-md-6 col-lg-4">
             <div class="card vip-card">
                 <div class="rank-name">VIP+</div>
-                <div class="price">150 EGP | 10 SAR</div>
+                <div class="price-box">
+                    <span class="price-egp">150 EGP</span>
+                    <span class="price-ryal">10 RYAL</span>
+                </div>
                 <button onclick="openForm('VIP+')" class="buy-btn">شراء الآن</button>
             </div>
         </div>
@@ -337,7 +317,10 @@
         <div class="col-md-6 col-lg-4">
             <div class="card mvp-card">
                 <div class="rank-name">MVP</div>
-                <div class="price">225 EGP | 15 SAR</div>
+                <div class="price-box">
+                    <span class="price-egp">225 EGP</span>
+                    <span class="price-ryal">15 RYAL</span>
+                </div>
                 <button onclick="openForm('MVP')" class="buy-btn">شراء الآن</button>
             </div>
         </div>
@@ -346,7 +329,10 @@
         <div class="col-md-6 col-lg-4">
             <div class="card mvp-card">
                 <div class="rank-name">MVP+</div>
-                <div class="price">300 EGP | 20 SAR</div>
+                <div class="price-box">
+                    <span class="price-egp">300 EGP</span>
+                    <span class="price-ryal">20 RYAL</span>
+                </div>
                 <button onclick="openForm('MVP+')" class="buy-btn">شراء الآن</button>
             </div>
         </div>
@@ -355,7 +341,10 @@
         <div class="col-md-6 col-lg-4">
             <div class="card algayar-card">
                 <div class="rank-name">ALGAYAR</div>
-                <div class="price">350 EGP | 32 SAR</div>
+                <div class="price-box">
+                    <span class="price-egp">350 EGP</span>
+                    <span class="price-ryal">32 RYAL</span>
+                </div>
                 <button onclick="openForm('ALGAYAR')" class="buy-btn">شراء الآن</button>
             </div>
         </div>
@@ -364,20 +353,22 @@
         <div class="col-md-6 col-lg-4">
             <div class="card algayar-card">
                 <div class="rank-name">ALGAYAR+</div>
-                <div class="price">550 EGP | 45 SAR</div>
+                <div class="price-box">
+                    <span class="price-egp">550 EGP</span>
+                    <span class="price-ryal">45 RYAL</span>
+                </div>
                 <button onclick="openForm('ALGAYAR+')" class="buy-btn">شراء الآن</button>
             </div>
         </div>
     </div>
 
-    <!-- قسم مميزات الرتب -->
+    <!-- قسم المميزات -->
     <div class="section-header" id="features">
         <h2>تفاصيل ومميزات الرتب</h2>
     </div>
 
     <div class="features-container">
-        
-        <!-- VIP -->
+        <!-- نفس محتوى المميزات (تم الاحتفاظ به) -->
         <div class="feature-card f-vip">
             <div class="feature-header"><h4>VIP</h4></div>
             <ul class="feature-list">
@@ -390,8 +381,6 @@
                 <li>1 Heart more</li>
             </ul>
         </div>
-
-        <!-- VIP+ -->
         <div class="feature-card f-vip">
             <div class="feature-header"><h4>VIP+</h4></div>
             <ul class="feature-list">
@@ -407,8 +396,6 @@
                 <li>2 Hearts more</li>
             </ul>
         </div>
-
-        <!-- MVP -->
         <div class="feature-card f-mvp">
             <div class="feature-header"><h4>MVP</h4></div>
             <ul class="feature-list">
@@ -424,8 +411,6 @@
                 <li>4 Hearts more</li>
             </ul>
         </div>
-
-        <!-- MVP+ -->
         <div class="feature-card f-mvp">
             <div class="feature-header"><h4>MVP+</h4></div>
             <ul class="feature-list">
@@ -442,8 +427,6 @@
                 <li>5 Hearts more</li>
             </ul>
         </div>
-
-        <!-- ALGAYAR -->
         <div class="feature-card f-algayar">
             <div class="feature-header"><h4>ALGAYAR</h4></div>
             <ul class="feature-list">
@@ -460,8 +443,6 @@
                 <li>6 Hearts more</li>
             </ul>
         </div>
-
-        <!-- ALGAYAR+ -->
         <div class="feature-card f-algayar">
             <div class="feature-header"><h4>ALGAYAR+</h4></div>
             <ul class="feature-list">
@@ -479,7 +460,6 @@
                 <li>8 Hearts more</li>
             </ul>
         </div>
-
     </div>
 
     <!-- قسم أسعار التجديد -->
@@ -529,7 +509,7 @@
             </li>
             <li>
                 <i class="bi bi-check-circle-fill text-primary"></i>
-                <span>نتمني لكم التوفيق !</span>
+                <span>موفقين جميعا ف سيرفرنا !</span>
             </li>
         </ul>
     </div>
