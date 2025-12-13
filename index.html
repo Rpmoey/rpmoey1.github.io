@@ -15,13 +15,22 @@
   <style>
     :root {
       --main-color: #00e676; /* أخضر نيون */
+      --main-glow: rgba(0, 230, 118, 0.7);
+      
+      --blue-color: #29b6f6; /* أزرق نيون */
+      --blue-glow: rgba(41, 182, 246, 0.7);
+      
       --purple-color: #d500f9; /* بنفسجي نيون */
+      --purple-glow: rgba(213, 0, 249, 0.7);
+      
       --discord-color: #5865F2; 
-      --bg-dark: #121212;
-      --card-bg: #1e1e1e;
+      --bg-dark: #0a0a0a; /* أسود حالك */
+      --card-bg: #141414;
       --text-color: #ffffff;
       --danger-color: #ff5252;
     }
+
+    html { scroll-behavior: smooth; }
 
     body {
       background-color: var(--bg-dark);
@@ -29,20 +38,27 @@
       color: var(--text-color);
       margin: 0;
       padding-bottom: 50px;
+      overflow-x: hidden;
     }
 
+    /* --- النافبار --- */
     .navbar {
-      background-color: rgba(30, 30, 30, 0.9);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid #333;
+      background-color: rgba(10, 10, 10, 0.9);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
     }
     .navbar-brand {
       color: var(--main-color) !important;
       font-weight: 900;
       text-transform: uppercase;
+      text-shadow: 0 0 15px var(--main-glow);
     }
-    .nav-link { color: #ccc !important; transition: 0.3s; }
-    .nav-link:hover, .nav-link.active { color: var(--main-color) !important; }
+    .nav-link { color: #ccc !important; transition: 0.3s; font-weight: bold; }
+    .nav-link:hover, .nav-link.active { 
+        color: var(--main-color) !important; 
+        text-shadow: 0 0 20px var(--main-glow);
+    }
 
     /* --- الهيرو --- */
     .hero-section {
@@ -50,140 +66,214 @@
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
-      height: 60vh;
+      height: 65vh;
       width: 100%;
       position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      border-bottom: 4px solid var(--main-color);
+      border-bottom: 2px solid var(--main-color);
+      box-shadow: 0 20px 100px -20px var(--main-glow);
     }
 
     .hero-overlay {
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.3), #121212);
+      background: linear-gradient(to bottom, rgba(0,0,0,0.5), var(--bg-dark));
     }
 
     .hero-content {
       position: relative;
       z-index: 2;
-      animation: slideUp 1s ease-out;
+      animation: zoomIn 1s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
 
-    @keyframes slideUp {
-        from { opacity: 0; transform: translateY(50px); }
-        to { opacity: 1; transform: translateY(0); }
+    @keyframes zoomIn {
+        from { opacity: 0; transform: scale(0.9) translateY(30px); }
+        to { opacity: 1; transform: scale(1) translateY(0); }
     }
 
     .hero-title {
-      font-size: 3.5rem;
+      font-size: 4rem;
       font-weight: 900;
-      text-shadow: 0 0 20px rgba(0, 230, 118, 0.4);
-      margin-bottom: 10px;
+      margin-bottom: 15px;
+      text-shadow: 
+        0 0 10px rgba(0,0,0,0.8),
+        0 0 20px var(--main-color),
+        0 0 50px var(--main-glow);
     }
-    .hero-title span { color: var(--main-color); }
+    .hero-title span { color: #fff; }
 
-    .hero-buttons {
-        display: flex; gap: 15px; justify-content: center; margin-top: 20px; flex-wrap: wrap;
-    }
+    .hero-buttons { display: flex; gap: 20px; justify-content: center; margin-top: 30px; flex-wrap: wrap; }
 
     .cta-btn {
-      background: transparent; border: 2px solid var(--main-color); color: var(--main-color); padding: 10px 40px; font-size: 1.1rem; font-weight: bold; border-radius: 50px; transition: all 0.3s; text-decoration: none;
+      background: rgba(0, 0, 0, 0.5);
+      border: 2px solid var(--main-color);
+      color: var(--main-color);
+      padding: 12px 50px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      box-shadow: 0 0 15px var(--main-glow);
     }
-    .cta-btn:hover { background: var(--main-color); color: #000; box-shadow: 0 0 20px var(--main-color); }
+    .cta-btn:hover {
+      background: var(--main-color);
+      color: #000;
+      box-shadow: 0 0 30px var(--main-color), 0 0 60px var(--main-glow);
+      transform: translateY(-5px);
+    }
 
     .discord-btn {
-        background-color: var(--discord-color); color: white; padding: 10px 40px; font-size: 1.1rem; font-weight: bold; border-radius: 50px; text-decoration: none; border: 2px solid var(--discord-color); transition: all 0.3s;
+        background-color: rgba(88, 101, 242, 0.2);
+        color: white; padding: 12px 50px;
+        font-size: 1.2rem; font-weight: bold; border-radius: 50px; text-decoration: none;
+        border: 2px solid var(--discord-color);
+        transition: all 0.3s;
+        box-shadow: 0 0 15px rgba(88, 101, 242, 0.5);
     }
-    .discord-btn:hover { background-color: transparent; color: var(--discord-color); box-shadow: 0 0 20px var(--discord-color); }
+    .discord-btn:hover {
+        background-color: var(--discord-color);
+        box-shadow: 0 0 30px var(--discord-color), 0 0 60px rgba(88, 101, 242, 0.8);
+        transform: translateY(-5px);
+    }
 
     /* --- العناوين --- */
-    .section-header { text-align: center; margin: 60px 0 40px; }
+    .section-header { text-align: center; margin: 80px 0 50px; }
     .section-header h2 {
-      font-weight: bold; font-size: 2.5rem; position: relative; display: inline-block;
+      font-weight: 900; font-size: 3rem; position: relative; display: inline-block;
+      text-shadow: 0 0 20px rgba(255,255,255,0.2);
     }
     .section-header h2::after {
-      content: ''; display: block; width: 50%; height: 4px; background: var(--main-color); margin: 10px auto 0; border-radius: 2px;
+      content: ''; display: block; width: 60%; height: 5px; 
+      background: linear-gradient(90deg, transparent, var(--main-color), transparent);
+      margin: 15px auto 0;
+      box-shadow: 0 0 15px var(--main-color);
     }
 
     /* --- الكروت --- */
     .card {
-      background-color: var(--card-bg); border: 1px solid #333; border-radius: 15px; padding: 30px 20px; text-align: center; transition: all 0.3s ease; position: relative; overflow: hidden;
+      background-color: var(--card-bg);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 20px;
+      padding: 30px 20px;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      position: relative;
+      overflow: visible;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8); 
     }
-    .card:hover { transform: translateY(-10px); }
 
-    .rank-name { font-size: 2rem; font-weight: 900; margin-bottom: 10px; text-transform: uppercase; }
+    .rank-name { font-size: 2.2rem; font-weight: 900; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
 
-    /* الألوان */
-    .vip .rank-name { color: #00e676; text-shadow: 0 0 15px rgba(0, 230, 118, 0.4); }
-    .vipplus .rank-name { color: #00c853; text-shadow: 0 0 15px rgba(0, 200, 83, 0.4); }
-    .mvp .rank-name { color: #29b6f6; text-shadow: 0 0 15px rgba(41, 182, 246, 0.4); }
-    .mvpplus .rank-name { color: #0288d1; text-shadow: 0 0 15px rgba(2, 136, 209, 0.4); }
-    .algayar .rank-name { color: #e040fb; text-shadow: 0 0 20px rgba(224, 64, 251, 0.5); }
-    .algayarplus .rank-name { color: #aa00ff; text-shadow: 0 0 25px rgba(170, 0, 255, 0.6); }
+    /* 🟢 VIP Shadows */
+    .vip-card:hover {
+        border-color: var(--main-color);
+        transform: translateY(-15px) scale(1.05);
+        box-shadow: 0 0 20px var(--main-glow), 0 0 50px var(--main-glow), 0 0 100px rgba(0, 230, 118, 0.2);
+        z-index: 10;
+    }
+    .vip-card .rank-name { color: var(--main-color); text-shadow: 0 0 15px var(--main-glow); }
+    .vip-card .buy-btn { background: linear-gradient(45deg, #00e676, #00c853); color: black; box-shadow: 0 0 15px var(--main-glow); }
 
-    .card.algayar { border: 2px solid #e040fb; }
-    .card.algayarplus { border: 2px solid #aa00ff; box-shadow: 0 0 20px rgba(170, 0, 255, 0.15); }
+    /* 🔵 MVP Shadows */
+    .mvp-card:hover {
+        border-color: var(--blue-color);
+        transform: translateY(-15px) scale(1.05);
+        box-shadow: 0 0 20px var(--blue-glow), 0 0 50px var(--blue-glow), 0 0 100px rgba(41, 182, 246, 0.2);
+        z-index: 10;
+    }
+    .mvp-card .rank-name { color: var(--blue-color); text-shadow: 0 0 15px var(--blue-glow); }
+    .mvp-card .buy-btn { background: linear-gradient(45deg, #29b6f6, #0288d1); box-shadow: 0 0 15px var(--blue-glow); }
 
-    .price { font-size: 1.4rem; font-weight: bold; color: #fff; margin-bottom: 5px; }
-    .credit { color: #888; font-size: 0.9rem; margin-bottom: 20px; }
+    /* 🟣 ALGAYAR Shadows */
+    .algayar-card { border: 1px solid rgba(213, 0, 249, 0.3); }
+    .algayar-card:hover {
+        border-color: var(--purple-color);
+        transform: translateY(-15px) scale(1.05);
+        box-shadow: 0 0 30px var(--purple-glow), 0 0 70px var(--purple-glow), 0 0 120px rgba(213, 0, 249, 0.3);
+        z-index: 10;
+    }
+    .algayar-card .rank-name { color: var(--purple-color); text-shadow: 0 0 25px var(--purple-glow); }
+    .algayar-card .buy-btn { background: linear-gradient(45deg, #e040fb, #aa00ff); box-shadow: 0 0 25px var(--purple-glow); }
 
-    .buy-btn { width: 100%; padding: 12px; border-radius: 10px; border: none; font-weight: bold; font-size: 1.1rem; color: white; transition: 0.3s; }
-    .card.vip .buy-btn, .card.vipplus .buy-btn { background: linear-gradient(45deg, #00e676, #00c853); color: #000; }
-    .card.mvp .buy-btn, .card.mvpplus .buy-btn { background: linear-gradient(45deg, #29b6f6, #0288d1); }
-    .card.algayar .buy-btn { background: linear-gradient(45deg, #e040fb, #d500f9); }
-    .card.algayarplus .buy-btn { background: linear-gradient(45deg, #aa00ff, #7a00ff); }
-    .buy-btn:hover { filter: brightness(1.2); transform: scale(1.02); }
+    .price { font-size: 1.8rem; font-weight: 900; color: #fff; margin-bottom: 25px; margin-top: 10px; }
+    
+    .buy-btn { width: 100%; padding: 15px; border-radius: 50px; border: none; font-weight: bold; font-size: 1.2rem; color: white; transition: 0.3s; }
+    .buy-btn:hover { filter: brightness(1.2); transform: scale(1.05); }
+
+    /* --- المميزات (Features) --- */
+    .features-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 25px;
+    }
+    .feature-card {
+        background: #141414; border: 1px solid #333; border-radius: 20px; padding: 25px; transition: 0.4s;
+    }
+    .feature-card:hover { transform: translateY(-10px); box-shadow: 0 10px 40px rgba(0,0,0,0.8); }
+    
+    .f-vip:hover { border-color: var(--main-color); box-shadow: 0 0 30px rgba(0, 230, 118, 0.2); }
+    .f-mvp:hover { border-color: var(--blue-color); box-shadow: 0 0 30px rgba(41, 182, 246, 0.2); }
+    .f-algayar:hover { border-color: var(--purple-color); box-shadow: 0 0 30px rgba(213, 0, 249, 0.2); }
+
+    .feature-header { text-align: center; padding-bottom: 15px; margin-bottom: 15px; border-bottom: 1px solid #333; }
+    .feature-header h4 { font-weight: 900; font-size: 1.5rem; margin: 0; }
+    .feature-list { list-style: none; padding: 0; margin: 0; text-align: left; direction: ltr; }
+    .feature-list li { margin-bottom: 12px; color: #ccc; font-size: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px; display: flex; align-items: center; }
+    .feature-list li:before { content: "✔"; font-weight: bold; margin-right: 10px; font-size: 1.1rem; }
+    
+    .f-vip h4, .f-vip li:before { color: var(--main-color); }
+    .f-mvp h4, .f-mvp li:before { color: var(--blue-color); }
+    .f-algayar h4, .f-algayar li:before { color: var(--purple-color); }
 
     /* --- جدول التجديد --- */
     .renewal-table {
-        background-color: var(--card-bg);
-        border-radius: 15px;
-        overflow: hidden;
-        border: 1px solid #333;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        background: rgba(30, 30, 30, 0.6); backdrop-filter: blur(10px); border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); 
+        box-shadow: 0 20px 50px rgba(0,0,0,0.6); transition: 0.3s;
     }
-    .table-dark {
-        --bs-table-bg: var(--card-bg);
-        margin-bottom: 0;
-    }
-    .table-dark th {
-        background-color: #333;
-        color: var(--main-color);
-        padding: 15px;
-        font-size: 1.2rem;
-    }
-    .table-dark td {
-        padding: 15px;
-        border-bottom: 1px solid #333;
-        font-size: 1.1rem;
-    }
-    .table-dark tr:last-child td { border-bottom: none; }
+    .renewal-table:hover { box-shadow: 0 0 40px rgba(0, 230, 118, 0.15); border-color: var(--main-color); }
+    .table-dark { --bs-table-bg: transparent; margin-bottom: 0; }
+    .table-dark th { background-color: rgba(0,0,0,0.5); color: var(--main-color); padding: 20px; font-size: 1.3rem; }
+    .table-dark td { padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 1.2rem; font-weight: bold; }
 
-    /* --- القوانين --- */
-    .rules-section {
-        margin-top: 80px; padding: 40px; background-color: #1e1e1e; border: 1px solid var(--danger-color); border-radius: 15px;
+    /* زر الصعود */
+    #btn-back-to-top {
+        position: fixed; bottom: 30px; right: 30px; display: none; 
+        background: var(--main-color); color: #000; border: none; width: 60px; height: 60px; border-radius: 50%; font-size: 1.8rem; z-index: 999; cursor: pointer; 
+        box-shadow: 0 0 20px var(--main-glow); transition: 0.3s;
     }
-    .rules-section h3 { color: var(--danger-color); font-weight: bold; text-align: center; margin-bottom: 30px; font-size: 2rem; }
+    #btn-back-to-top:hover { transform: translateY(-10px); background: #fff; box-shadow: 0 0 40px var(--main-color); }
+
+    /* الشروط */
+    .rules-section { 
+        margin-top: 100px; padding: 50px; 
+        background: linear-gradient(145deg, #141414, #0a0a0a);
+        border: 1px solid rgba(255, 82, 82, 0.3); border-radius: 20px; 
+        box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+    }
+    .rules-section h3 { color: var(--danger-color); font-weight: bold; text-align: center; margin-bottom: 30px; font-size: 2.2rem; text-shadow: 0 0 20px rgba(255, 82, 82, 0.4); }
     .rules-list { list-style: none; padding: 0; margin: 0; }
-    .rules-list li { margin-bottom: 15px; font-size: 1.2rem; display: flex; align-items: center; border-bottom: 1px solid #333; padding-bottom: 10px; }
-    .rules-list li:last-child { border-bottom: none; }
-    .rules-list li i { margin-left: 15px; font-size: 1.4rem; }
+    .rules-list li { margin-bottom: 15px; font-size: 1.3rem; display: flex; align-items: center; border-bottom: 1px solid #333; padding-bottom: 15px; }
+    .rules-list li i { margin-left: 15px; font-size: 1.5rem; }
 
-    footer { text-align: center; margin-top: 80px; padding: 20px; border-top: 1px solid #333; color: #777; }
+    footer { text-align: center; margin-top: 100px; padding: 30px; border-top: 1px solid #333; color: #666; font-size: 1.1rem; }
 
     /* المودال */
-    .modal-content { background-color: #1e1e1e; color: white; border: 1px solid #444; }
-    .modal-header { border-bottom: 1px solid #333; }
-    .modal-footer { border-top: 1px solid #333; }
-    .form-control, .form-select { background-color: #2d2d2d; border: 1px solid #444; color: white; }
-    .form-control:focus, .form-select:focus { background-color: #333; color: white; border-color: var(--main-color); box-shadow: none; }
+    .modal-content { background-color: #141414; color: white; border: 1px solid #444; box-shadow: 0 0 50px rgba(0,0,0,0.8); }
+    .form-control, .form-select { background-color: #222; border: 1px solid #444; color: white; padding: 12px; }
+    .form-control:focus { box-shadow: 0 0 15px var(--main-glow); border-color: var(--main-color); }
   </style>
 </head>
 
 <body>
+
+  <!-- زر الصعود -->
+  <button type="button" id="btn-back-to-top">
+    <i class="bi bi-arrow-up"></i>
+  </button>
 
   <nav class="navbar navbar-expand-lg sticky-top navbar-dark">
     <div class="container">
@@ -195,6 +285,7 @@
         <div class="navbar-nav me-auto">
           <a class="nav-link active" href="#">الرئيسية</a>
           <a class="nav-link" href="#ranks">الرتب</a>
+          <a class="nav-link" href="#features">المميزات</a>
           <a class="nav-link" href="#renew">التجديد</a>
           <a class="nav-link" href="#terms">الشروط</a>
           <a class="nav-link" href="https://discord.gg/ueNFHf6KDG" target="_blank">الديسكورد</a>
@@ -207,9 +298,7 @@
     <div class="hero-overlay"></div>
     <div class="hero-content container">
         <h1 class="hero-title">Welcome to <span>Algayar</span></h1>
-        <p class="hero-subtitle">
-            انضم للنخبة وسيطر على السيرفر بأقوى الرتب والمميزات الحصرية.
-        </p>
+        <p class="hero-subtitle">انضم للنخبة وسيطر على السيرفر بأقوى الرتب والمميزات الحصرية.</p>
         <div class="hero-buttons">
             <a href="#ranks" class="cta-btn">تصفح الرتب <i class="bi bi-arrow-down"></i></a>
             <a href="https://discord.gg/ueNFHf6KDG" target="_blank" class="discord-btn">
@@ -221,7 +310,6 @@
 
   <div class="container">
     
-    <!-- قسم الرتب -->
     <div class="section-header" id="ranks">
         <h2>اختر رتبتك</h2>
     </div>
@@ -229,63 +317,169 @@
     <div class="row g-4 justify-content-center">
         <!-- VIP -->
         <div class="col-md-6 col-lg-4">
-            <div class="card vip">
+            <div class="card vip-card">
                 <div class="rank-name">VIP</div>
-                <div class="price">85 جنيه | 6 ريال</div>
-                <div class="credit">150M Discord Credit</div>
+                <div class="price">85 EGP | 6 SAR</div>
                 <button onclick="openForm('VIP')" class="buy-btn">شراء الآن</button>
             </div>
         </div>
 
         <!-- VIP+ -->
         <div class="col-md-6 col-lg-4">
-            <div class="card vipplus">
+            <div class="card vip-card">
                 <div class="rank-name">VIP+</div>
-                <div class="price">150 جنيه | 10 ريال</div>
-                <div class="credit">210M Discord Credit</div>
+                <div class="price">150 EGP | 10 SAR</div>
                 <button onclick="openForm('VIP+')" class="buy-btn">شراء الآن</button>
             </div>
         </div>
 
         <!-- MVP -->
         <div class="col-md-6 col-lg-4">
-            <div class="card mvp">
+            <div class="card mvp-card">
                 <div class="rank-name">MVP</div>
-                <div class="price">225 جنيه | 15 ريال</div>
-                <div class="credit">350M Discord Credit</div>
+                <div class="price">225 EGP | 15 SAR</div>
                 <button onclick="openForm('MVP')" class="buy-btn">شراء الآن</button>
             </div>
         </div>
 
         <!-- MVP+ -->
         <div class="col-md-6 col-lg-4">
-            <div class="card mvpplus">
+            <div class="card mvp-card">
                 <div class="rank-name">MVP+</div>
-                <div class="price">300 جنيه | 20 ريال</div>
-                <div class="credit">450M Discord Credit</div>
+                <div class="price">300 EGP | 20 SAR</div>
                 <button onclick="openForm('MVP+')" class="buy-btn">شراء الآن</button>
             </div>
         </div>
 
         <!-- ALGAYAR -->
         <div class="col-md-6 col-lg-4">
-            <div class="card algayar">
+            <div class="card algayar-card">
                 <div class="rank-name">ALGAYAR</div>
-                <div class="price">350 جنيه | 32 ريال</div>
-                <div class="credit">650M Discord Credit</div>
+                <div class="price">350 EGP | 32 SAR</div>
                 <button onclick="openForm('ALGAYAR')" class="buy-btn">شراء الآن</button>
             </div>
         </div>
 
         <!-- ALGAYAR+ -->
         <div class="col-md-6 col-lg-4">
-            <div class="card algayarplus">
+            <div class="card algayar-card">
                 <div class="rank-name">ALGAYAR+</div>
-                <div class="price">550 جنيه | 45 ريال</div>
-                <div class="credit">900M Discord Credit</div>
+                <div class="price">550 EGP | 45 SAR</div>
                 <button onclick="openForm('ALGAYAR+')" class="buy-btn">شراء الآن</button>
             </div>
         </div>
+    </div>
+
+    <!-- قسم مميزات الرتب -->
+    <div class="section-header" id="features">
+        <h2>تفاصيل ومميزات الرتب</h2>
+    </div>
+
+    <div class="features-container">
+        
+        <!-- VIP -->
+        <div class="feature-card f-vip">
+            <div class="feature-header"><h4>VIP</h4></div>
+            <ul class="feature-list">
+                <li>3 Sethomes</li>
+                <li>More spaces /backpack</li>
+                <li>/delhome</li>
+                <li>/nightvision</li>
+                <li>/kit vip</li>
+                <li>/warp vip</li>
+                <li>1 Heart more</li>
+            </ul>
+        </div>
+
+        <!-- VIP+ -->
+        <div class="feature-card f-vip">
+            <div class="feature-header"><h4>VIP+</h4></div>
+            <ul class="feature-list">
+                <li>4 Sethomes</li>
+                <li>More spaces /backpack</li>
+                <li>/delhome</li>
+                <li>/nightvision</li>
+                <li>/kit vip+</li>
+                <li>/warp vip+</li>
+                <li>/back</li>
+                <li>500 Blocks claim</li>
+                <li>Miners</li>
+                <li>2 Hearts more</li>
+            </ul>
+        </div>
+
+        <!-- MVP -->
+        <div class="feature-card f-mvp">
+            <div class="feature-header"><h4>MVP</h4></div>
+            <ul class="feature-list">
+                <li>6 Sethomes</li>
+                <li>Backpack spaces > Vip+</li>
+                <li>/delhome & /nightvision</li>
+                <li>/kit mvp</li>
+                <li>/warp mvp</li>
+                <li>/back</li>
+                <li>/feed (every 10m)</li>
+                <li>850 Claim blocks</li>
+                <li>Diamond Miners</li>
+                <li>4 Hearts more</li>
+            </ul>
+        </div>
+
+        <!-- MVP+ -->
+        <div class="feature-card f-mvp">
+            <div class="feature-header"><h4>MVP+</h4></div>
+            <ul class="feature-list">
+                <li>8 Sethomes</li>
+                <li>Backpack spaces > MVP</li>
+                <li>/delhome & /nightvision</li>
+                <li>/kit mvp+</li>
+                <li>/back</li>
+                <li>/feed (every 10m)</li>
+                <li>/fix hand</li>
+                <li>Claim 7 places</li>
+                <li>1250 Claim blocks</li>
+                <li>Diamond Miners</li>
+                <li>5 Hearts more</li>
+            </ul>
+        </div>
+
+        <!-- ALGAYAR -->
+        <div class="feature-card f-algayar">
+            <div class="feature-header"><h4>ALGAYAR</h4></div>
+            <ul class="feature-list">
+                <li>14 Sethomes</li>
+                <li>Backpack spaces > MVP+</li>
+                <li>/delhome & /nightvision</li>
+                <li>/kit gyar</li>
+                <li>/back</li>
+                <li>/feed</li>
+                <li>/fix all & /fix hand</li>
+                <li>Claim 10 places</li>
+                <li>2500 Claim blocks</li>
+                <li>Better Miners</li>
+                <li>6 Hearts more</li>
+            </ul>
+        </div>
+
+        <!-- ALGAYAR+ -->
+        <div class="feature-card f-algayar">
+            <div class="feature-header"><h4>ALGAYAR+</h4></div>
+            <ul class="feature-list">
+                <li>20 Sethomes</li>
+                <li>2 Full Double Chests Backpack</li>
+                <li>/delhome & /nightvision</li>
+                <li>/kit gyar</li>
+                <li>/back</li>
+                <li>/feed</li>
+                <li>/fix all & /fix hand</li>
+                <li>Claim 20 places</li>
+                <li>8500 Claim blocks</li>
+                <li>Best Miners for Diamond!</li>
+                <li>More shops than members</li>
+                <li>8 Hearts more</li>
+            </ul>
+        </div>
+
     </div>
 
     <!-- قسم أسعار التجديد -->
@@ -300,34 +494,16 @@
                     <thead>
                         <tr>
                             <th>الرتبة</th>
-                            <th>سعر التجديد (مليون)</th>
+                            <th>سعر التجديد</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td style="color: #00e676; font-weight: bold;">VIP</td>
-                            <td style="font-weight: bold;">30</td>
-                        </tr>
-                        <tr>
-                            <td style="color: #00c853; font-weight: bold;">VIP+</td>
-                            <td style="font-weight: bold;">40</td>
-                        </tr>
-                        <tr>
-                            <td style="color: #29b6f6; font-weight: bold;">MVP</td>
-                            <td style="font-weight: bold;">50</td>
-                        </tr>
-                        <tr>
-                            <td style="color: #0288d1; font-weight: bold;">MVP+</td>
-                            <td style="font-weight: bold;">60</td>
-                        </tr>
-                        <tr>
-                            <td style="color: #e040fb; font-weight: bold;">ALGAYAR</td>
-                            <td style="font-weight: bold;">75</td>
-                        </tr>
-                        <tr>
-                            <td style="color: #aa00ff; font-weight: bold;">ALGAYAR+</td>
-                            <td style="font-weight: bold;">80</td>
-                        </tr>
+                        <tr><td style="color: #00e676;">VIP</td><td>30 EGP</td></tr>
+                        <tr><td style="color: #00c853;">VIP+</td><td>40 EGP</td></tr>
+                        <tr><td style="color: #29b6f6;">MVP</td><td>50 EGP</td></tr>
+                        <tr><td style="color: #0288d1;">MVP+</td><td>60 EGP</td></tr>
+                        <tr><td style="color: #e040fb;">ALGAYAR</td><td>75 EGP</td></tr>
+                        <tr><td style="color: #aa00ff;">ALGAYAR+</td><td>80 EGP</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -401,8 +577,22 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // ⚠️⚠️ ضع رابط الويب هوك الخاص بك هنا ⚠️⚠️
-    const WEBHOOK_URL = "ضع_الويب_هوك_هنا"; 
+    // ✅ الرابط الخاص بك
+    const WEBHOOK_URL = "https://discord.com/api/webhooks/1449198751095980123/qbUWjrUtMOJnstN9OBsquFsLolfFkjSQur2h8NZRUac-EXUKAd6tQ_9m6y1NMqVhCM-T"; 
+
+    // زر الصعود
+    let mybutton = document.getElementById("btn-back-to-top");
+    window.onscroll = function () {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    };
+    mybutton.addEventListener("click", function () {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    });
 
     let selectedRank = "";
 
@@ -421,11 +611,6 @@
       if(!mcName || !dcName) {
         alert("يرجى ملء جميع البيانات!");
         return;
-      }
-
-      if (WEBHOOK_URL === "ضع_الويب_هوك_هنا") {
-          alert("تنبيه: يجب وضع رابط الويب هوك في الكود!");
-          return;
       }
 
       const msg = {
