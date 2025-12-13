@@ -150,7 +150,7 @@
     .hero-section {
       background: 
         linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.92)),
-        url('https://media4.giphy.com/media/v1.Y2lkPTZjMDliOTUyMnJod3FraGI3ZzZ6eXE4NDczOXVudGlnOTYyYXV5bjY3ajJla3MzaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/PvSGE5EgKD3jlsPwgx/giphy.gif');
+        url('https://media1.giphy.com/media/v1.Y2lkPTZjMDliOTUyMnd4eWI3cmQ1Mjdrbm84anhmYTFlMTl1YXQ1N2EwNGt3NTIzaXYxOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/whoXRhu4Qj07eomK5x/giphy.gif');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
@@ -648,6 +648,99 @@
       min-width: 24px;
     }
 
+    /* ======== أنماط برنامج الذكاء الاصطناعي ======== */
+    .message.bot {
+      align-self: flex-start;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.15));
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      color: var(--text-secondary);
+      padding: 1rem;
+      border-radius: 12px;
+      max-width: 85%;
+      margin-bottom: 0.75rem;
+    }
+
+    .bot-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--secondary-color);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .bot-header i {
+      font-size: 1.2rem;
+      color: var(--secondary-color);
+    }
+
+    .quick-questions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .quick-btn {
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid var(--secondary-color);
+      color: var(--secondary-color);
+      padding: 0.5rem 0.75rem;
+      border-radius: 8px;
+      text-align: right;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    .quick-btn:hover {
+      background: rgba(59, 130, 246, 0.2);
+      transform: translateX(-3px);
+    }
+
+    .bot-response {
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    .bot-link {
+      color: var(--secondary-light);
+      text-decoration: underline;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .bot-link:hover {
+      color: var(--secondary-color);
+    }
+
+    .bot-list {
+      margin: 0.5rem 0;
+      padding-right: 1.5rem;
+    }
+
+    .bot-list li {
+      margin-bottom: 0.25rem;
+      color: var(--text-secondary);
+    }
+
+    .question-number {
+      background: var(--secondary-color);
+      color: white;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      margin-left: 0.25rem;
+    }
+
     /* ======== الشات ======== */
     .chat-float-btn {
       position: fixed;
@@ -919,18 +1012,46 @@
   <!-- نافذة الشات -->
   <div id="chatWindow" class="chat-container">
     <div class="chat-header">
-      <h6><i class="bi bi-headset"></i> تحدث مع الأدمن</h6>
+      <h6><i class="bi bi-robot"></i> برنامج الذكاء الاصطناعي للمساعدة</h6>
       <button class="close-chat">&times;</button>
     </div>
     
     <div class="chat-messages" id="chatMessages">
-      <div class="message admin">
-        <strong>الأدمن:</strong> أهلاً! كيف يمكنني مساعدتك؟
+      <!-- الرسالة الافتتاحية للبوت -->
+      <div class="message bot">
+        <div class="bot-header">
+          <i class="bi bi-robot"></i> مساعد Algayar AI
+        </div>
+        <div class="bot-response">
+          أهلاً بك! أنا برنامج الذكاء الاصطناعي للمساعدة في <strong>Algayar Shop</strong> 🎮
+          <br><br>
+          يمكنني مساعدتك في الإجابة على ٥ أسئلة رئيسية:
+        </div>
+        <div class="quick-questions">
+          <button class="quick-btn" onclick="askQuestion(1)">
+            <span class="question-number">١</span> كيف أدخل سيرفر ماين كرافت؟
+          </button>
+          <button class="quick-btn" onclick="askQuestion(2)">
+            <span class="question-number">٢</span> إيه قواعد السيرفر؟
+          </button>
+          <button class="quick-btn" onclick="askQuestion(3)">
+            <span class="question-number">٣</span> السيرفر بيشتغل بيدروك ولا جافا؟
+          </button>
+          <button class="quick-btn" onclick="askQuestion(4)">
+            <span class="question-number">٤</span> هل أقدر أخد رتبة مجانية؟
+          </button>
+          <button class="quick-btn" onclick="askQuestion(5)">
+            <span class="question-number">٥</span> أريد أتكلم مع الأدمن أو أستفسر أكتر
+          </button>
+        </div>
+        <div class="bot-response" style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-muted);">
+          اختر سؤالاً من الأعلى أو اكتب سؤالك مباشرة في المربع أدناه.
+        </div>
       </div>
     </div>
     
     <div class="chat-input-area">
-      <input type="text" id="chatInput" placeholder="اكتب رسالتك هنا..." maxlength="200">
+      <input type="text" id="chatInput" placeholder="اكتب سؤالك هنا..." maxlength="200">
       <button id="sendChatBtn"><i class="bi bi-send"></i></button>
     </div>
   </div>
@@ -1347,140 +1468,37 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
+    // إعدادات السيرفر - قم بتغيير هذه القيم وفقاً لسيرفرك
+    const SERVER_IP = 'algayar.aternos.me'; // ضع IP سيرفرك هنا
+    const DISCORD_LINK = 'https://discord.gg/ueNFHf6KDG'; // رابط الديسكورد الخاص بك
+    const SERVER_VERSION = 'Java Edition 1.21.1'; // إصدار السيرفر الخاص بك
+    const SERVER_TYPE = 'Java'; // يمكن أن يكون Java أو Bedrock
+    
     const WEBHOOK_URL = "https://discord.com/api/webhooks/1449198751095980123/qbUWjrUtMOJnstN9OBsquFsLolfFkjSQur2h8NZRUac-EXUKAd6tQ_9m6y1NMqVhCM-T";
     
-    // تهيئة المتغيرات
-    let mybutton = document.getElementById("btn-back-to-top");
-    let selectedRank = "";
-    
-    // زر الصعود
-    window.onscroll = function() {
-      if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-        mybutton.style.display = "block";
-      } else {
-        mybutton.style.display = "none";
-      }
-    };
-    
-    mybutton.addEventListener("click", function() {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
-    
-    // الشات
-    const chatButton = document.getElementById('chatButton');
-    const chatWindow = document.getElementById('chatWindow');
-    const closeChat = document.querySelector('.close-chat');
-    const sendChatBtn = document.getElementById('sendChatBtn');
-    const chatInput = document.getElementById('chatInput');
-    const chatMessages = document.getElementById('chatMessages');
-    
-    chatButton.addEventListener('click', () => {
-      chatWindow.classList.toggle('active');
-    });
-    
-    closeChat.addEventListener('click', () => {
-      chatWindow.classList.remove('active');
-    });
-    
-    function sendChatMessage() {
-      const message = chatInput.value.trim();
-      if (!message) return;
-      
-      // إضافة رسالة المستخدم
-      const userMsg = document.createElement('div');
-      userMsg.className = 'message user';
-      userMsg.innerHTML = `<strong>أنت:</strong> ${message}`;
-      chatMessages.appendChild(userMsg);
-      
-      chatInput.value = '';
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-      
-      // محاكاة رد الأدمن
-      setTimeout(() => {
-        const responses = [
-          "تم استلام رسالتك! رقم تذكرتك: #" + Math.floor(Math.random() * 10000),
-          "شكراً لتواصلك معنا. فريق الدعم سيرد عليك قريباً.",
-          "هل تحتاج مساعدة في اختيار الرتبة المناسبة؟",
-          "تم تسجيل استفسارك بنجاح. سنعود إليك خلال دقائق."
-        ];
+    // قاعدة بيانات الأسئلة والأجوبة
+    const aiQuestions = {
+      1: {
+        question: "كيف أدخل سيرفر ماين كرافت؟",
+        answer: `🎮 **طريقة الدخول لسيرفر AlgayarCraft:**
         
-        const response = responses[Math.floor(Math.random() * responses.length)];
-        const adminMsg = document.createElement('div');
-        adminMsg.className = 'message admin';
-        adminMsg.innerHTML = `<strong>الأدمن:</strong> ${response}`;
-        chatMessages.appendChild(adminMsg);
-        
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-      }, 1000);
-    }
-    
-    sendChatBtn.addEventListener('click', sendChatMessage);
-    chatInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') sendChatMessage();
-    });
-    
-    // فتح نموذج الشراء
-    function openForm(rank) {
-      selectedRank = rank;
-      document.getElementById('modalRankName').textContent = rank;
-      const modal = new bootstrap.Modal(document.getElementById('purchaseModal'));
-      modal.show();
-    }
-    
-    // إرسال الطلب
-    function sendOrder() {
-      const mcName = document.getElementById("minecraftName").value.trim();
-      const dcName = document.getElementById("discordName").value.trim();
-      const method = document.getElementById("paymentMethod").value;
+1. **افتح لعبة ماين كرافت** (إصدار ${SERVER_TYPE})
+2. **اذهب إلى قائمة Multiplayer**
+3. **اضغط على Add Server** أو "إضافة سيرفر"
+4. **أدخل العنوان التالي:** 
+   \`\`\`
+   ${SERVER_IP}
+   \`\`\`
+5. **اضغط Save** ثم **Join Server**
+6. **استمتع باللعب!** 🎉
+
+🔧 **معلومة:** إذا واجهت أي مشكلة في الاتصال، تأكد من:
+• استخدام الإصدار الصحيح (${SERVER_VERSION})
+• الاتصال بالإنترنت
+• كتابة العنوان بشكل صحيح
+
+هل تحتاج مساعدة إضافية؟`
+      },
       
-      if (!mcName || !dcName) {
-        alert("⚠️ يرجى ملء جميع البيانات المطلوبة");
-        return;
-      }
-      
-      const confirmation = confirm(`🎮 تأكيد طلب رتبة ${selectedRank}\n👤 اللاعب: ${mcName}\n💳 الدفع: ${method}\n\nهل أنت متأكد؟`);
-      if (!confirmation) return;
-      
-      const msg = {
-        embeds: [{
-          title: "🛒 طلب رتبة جديد",
-          color: 0x10b981,
-          fields: [
-            { name: "👤 اللاعب", value: `\`${mcName}\``, inline: true },
-            { name: "💎 الرتبة", value: `**${selectedRank}**`, inline: true },
-            { name: "💳 الدفع", value: `\`${method}\``, inline: true },
-            { name: "💬 الديسكورد", value: `\`${dcName}\``, inline: false }
-          ],
-          timestamp: new Date()
-        }]
-      };
-      
-      // إظهار حالة التحميل
-      const sendBtn = document.querySelector('.btn-success');
-      const originalText = sendBtn.innerHTML;
-      sendBtn.innerHTML = '<i class="bi bi-arrow-clockwise"></i> جاري الإرسال...';
-      sendBtn.disabled = true;
-      
-      fetch(WEBHOOK_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(msg)
-      })
-      .then(() => {
-        alert("✅ تم إرسال طلبك بنجاح! توجه للديسكورد لمتابعة الطلب.");
-        bootstrap.Modal.getInstance(document.getElementById('purchaseModal')).hide();
-        document.getElementById("minecraftName").value = "";
-        document.getElementById("discordName").value = "";
-      })
-      .catch(err => {
-        alert("❌ حدث خطأ في الاتصال. حاول مرة أخرى.");
-        console.error(err);
-      })
-      .finally(() => {
-        sendBtn.innerHTML = originalText;
-        sendBtn.disabled = false;
-      });
-... (2 KB left)
+      2: {
+        question: "إ... (17 KB left)
